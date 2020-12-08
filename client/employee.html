@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head leng = "en">
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=&lt;?php bloginfo('charset'); ?&gt;"/>
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Buy, view, manage your train tickets."/>
+		<meta name="keywords" content="Southern California Railway Train Tickets">
+		<meta name="author" content="Amber, Yash, and Raymond">
+		<title>Southern California Railway System</title>
+		<link rel="icon" type="image/png" href="_images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="_css/scrs.css">
+		<style type="text/css">
+					
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="_js/dropdown.js" type="text/javascript"></script>
+		<script type="text/javascript">
+    		$(document).ready(function() {
+			$('#addBtn').click(function() {
+				$.get('http://localhost:3000/getEmployeeInfo' + '?fname=' + document.getElementById("fName").value + '&lname=' + document.getElementById("lName").value + '&empID=' + document.getElementById("empID").value, function(list) {
+					// 
+				});
+			});
+		});
+    	</script>
+	</head>
+	<body class="contain">
+		<header>
+			<div class="title">
+				<h1><a href="index.html">Southern California Railway System</a></h1>
+			</div>
+			<nav>
+				<ul id = "nav">
+					<li  class = "drop2" >
+						<a href="tickets.html">Tickets</a>
+						<ul class = "dropp2">
+							<!--If customer logged in-->
+							<li><a href="purchased.html">Purchased</a></li>
+							<!--If admin/employee logged in-->
+							<li><a href="passenger.html">Passenger</a></li>
+						</ul>
+					</li>
+					<li class = "drop1" >
+						<a href="schedule.html">Schedule</a>
+						<ul class = "dropp1">
+							<!-- if admin/employee logged in -->
+							<li><a class= "current" href="employee.html">Employee</a></li>
+						</ul>
+					</li>
+					<!--If not logged in-->
+					<li><a href="register.html">Register</a></li>
+					<li><a href="signIn.html ">SignIn</a></li>
+					<!--If logged in-->
+					<li><a href="account.html">Account</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class = "mainimg">
+			<img src="_images/employeeTrain.jpg" altt="Train Picture">
+		</div>
+		<main>
+			<h2>Manage and Schedule Employees</h2>
+			<hr>
+			<form action="/action_page.php">
+				<fieldset>
+					<legend>Add To Schedule</legend>
+				  	<label for="fName">First:</label>
+	  				<input class="searchBar sched" type="text" id="fName" name="fName" required>
+	  				<label for="lName">Last:</label>
+	  				<input class="searchBar sched" type="text" id="lName" name="lName" required>
+	  				<label for="empID">Employee ID:</label>
+	  				<input class="searchBar sched" type="text" id="empID" name="empID" required>
+				  	<button id="addBtn" type="button">Add</button>
+				</fieldset>
+			</form>
+			<table>
+				<tr>
+					<th>Employee</th>
+					<th>Department</th>
+					<th>Job Title</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Action</th>
+				</tr>
+				<tr>
+					<td>Jordyn Jefferson</td>
+					<td>Administration</td>
+					<td>Manager</td>
+					<td>858-100-9123</td>
+					<td>JJefferson@scrs.com</td>
+					<td>
+						<button type="button">Remove</button>
+					</td>
+				</tr>
+				<!-- use loop to display content from the database -->
+			</table>
+			<div class = "clear"></div>
+		</main>
+		<footer>
+			<p>&copy;2020 Southern California Railway System --- CPSC 531 Advanced Database Management Project --- Dr. Kanika Sood --- Developers: Amber Kimberling, Yash Bhambhani, and Raymond Magdaleno</p>
+		</footer>
+	</body>
+</html>

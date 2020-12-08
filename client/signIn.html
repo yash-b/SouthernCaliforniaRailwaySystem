@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head leng = "en">
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=&lt;?php bloginfo('charset'); ?&gt;"/>
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Buy, view, manage your train tickets."/>
+		<meta name="keywords" content="Southern California Railway Train Tickets">
+		<meta name="author" content="Amber, Yash, and Raymond">
+		<title>Southern California Railway System</title>
+		<link rel="icon" type="image/png" href="_images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="_css/scrs.css">
+		<style type="text/css">
+					
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="_js/dropdown.js" type="text/javascript"></script>
+		<script type="text/javascript">
+    		$(document).ready(function() {
+			$('#signInBtn').click(function() {
+				$.get('http://localhost:3000/signIn' + '?email=' + document.getElementById("email").value + '&pass=' + document.getElementById("pass").value, function(list) {
+					// console.log(list[2]);
+					if (list[0] == true){
+						if (list[3] == 'P') {
+							// alert('Welcome, ' + list[2] + '!');
+							window.location.href = 'purchased.html';
+							// console.log('redirected');
+						} else {
+							// alert('Welcome employee ' + list[2] + '!');
+							window.location.href = 'passenger.html';
+						}
+					}
+					else {
+						// alert('Wrong credentials');
+						$('#authentication').html('Invalid Password! Try again.');
+					}
+					
+				});
+			});
+		});
+    	</script>
+	</head>
+	<body class="contain">
+		<header>
+			<div class="title">
+				<h1><a href="index.html">Southern California Railway System</a></h1>
+			</div>
+			<nav>
+				<ul id = "nav">
+					<li  class = "drop2" >
+						<a href="tickets.html">Tickets</a>
+						<ul class = "dropp2">
+							<!--If customer logged in-->
+							<li><a href="purchased.html">Purchased</a></li>
+							<!--If admin/employee logged in-->
+							<li><a href="passenger.html">Passenger</a></li>
+						</ul>
+					</li>
+					<li class = "drop1" >
+						<a href="schedule.html">Schedule</a>
+						<ul class = "dropp1">
+							<!-- if admin/employee logged in -->
+							<li><a href="employee.html">Employee</a></li>
+						</ul>
+					</li>
+					<!--If not logged in-->
+					<li><a href="register.html">Register</a></li>
+					<li><a class= "current" href="signIn.html ">SignIn</a></li>
+					<!--If logged in-->
+					<li><a href="account.html">Account</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class = "mainimg">
+			<img src="_images/signInTrain.jpg" altt="Train Picture">
+		</div>
+		<main>
+			<h2>Sign In - Welcome Back Valued Train Rider!</h2>
+			<hr>
+			<form class = "registerSign" action="/action_page.php">
+				<fieldset>
+					<legend>Sign In</legend>
+	  				<label for="email">Email:</label>
+	  				<input class="RegSign" type="email" id="email" pattern=".+@globex.com" placeholder="johndoe@gmail.com" required>
+	  				<br>
+	  				<label for="password">Password:</label>
+	  				<input class="RegSign" type="password" id="pass" name="password" minlength="6" required>
+	  				<br>
+					<button id="signInBtn" type="button">Sign In</button>
+					<label for="authentication" id="authentication" style="background-color: #FFFF00"></label>
+					<br>
+				</fieldset>
+			</form>
+			<div class = "fifty">
+				<img src="_images/signinfifty.jpg" width="100%" style="margin-bottom: 20px;" alt="train next to ocean">
+				<h4>We Value All our Customers!</h4>
+			</div>
+			<div class = "clear"></div>
+		</main>
+		<footer>
+			<p>&copy;2020 Southern California Railway System --- CPSC 531 Advanced Database Management Project --- Dr. Kanika Sood --- Developers: Amber Kimberling, Yash Bhambhani, and Raymond Magdaleno</p>
+		</footer>
+	</body>
+</html>

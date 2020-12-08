@@ -1,0 +1,190 @@
+/*body*/
+	body.contain{
+		width: 100%;
+		max-width: 2048px;
+		font-family: Arial;
+		margin: 0px;
+	}
+/*header*/
+	header{
+		width: 97.4%;
+		padding: 20px 20px 0.5%;
+		background-color: #000000;
+		color: #ffffff;
+		height: 50px;
+	}
+	header h1, h1 a{
+		margin-top: 0px;
+		color: #ffffff;
+	}
+	h1 a:hover{
+		color:#007010;
+	}
+	div.title{
+		width:700px;
+		float:left;
+	}
+	nav{
+		float:right;
+		width:520px;
+	}
+	nav ul{
+		list-style-type: none;
+		line-height: 0px;
+
+	}
+	#nav li{
+		position: relative;
+		display: block;
+		float: left;
+		z-index: 500;
+	}
+	#nav li a{
+		text-decoration: none;
+		display: block;
+		padding: 5px 15px;
+		color:#ffffff;
+		font-weight: bold;
+	}
+	#nav li a.current{
+		text-decoration: underline;
+		color:#007010;
+		font-weight: bold;
+	}
+	#nav li a:hover{
+		color: #ff7800;
+	}
+	/*drop downs*/
+	#nav ul{
+		position: absolute;
+		margin-left: 0px;
+		width:100px;
+		list-style: none;
+		background-color: #000000;
+		margin-top: 10px;
+		display: none;
+	}
+	#nav ul li{
+		width: 100%;
+		padding: 10px;
+	}
+	#nav ul li a{
+		margin-left: -50px;
+	}
+
+/*mainImage*/
+	div.mainimg img{
+		width:100%;
+	}
+/*main*/
+	main{
+		margin-right: auto;
+		margin-left:auto;
+		width: 90%;
+	}
+	main h2{
+		color:#007010;
+	}
+	p.blurb a{
+		text-decoration: none;
+		font-weight: bold;
+		color: #000000;
+	}
+	p.red{
+		color: #ff0000;
+	}
+	hr{
+		background-color: #ff7800;
+		height:1px;
+	}
+	p.blurb a:hover{
+		color: #ff7800;
+	}
+	div.fifty{
+		width:47%;
+		padding: 10px 0.5%;
+		margin: 10px 1%;
+		float:left;
+	}
+	div.fifty h4{
+		margin: 0px;
+	}
+	div.fifty img{
+		float: left;
+		margin: 0px 10px 2px 2px ;
+	}
+	input.searchBar{
+		margin-right:100px;
+		padding:5px;
+		width:230px;
+	}
+	input.sched{
+		width:180px;
+		margin-right:40px;
+	}
+	input.RegSign{
+		margin-bottom: 20px;
+		width:58.6%;
+	}
+	form{
+		padding: 20px 0px;
+	}
+	form.registerSign{
+		width:49%;
+		padding: 10px 0.5%;
+		margin-bottom: 20px;
+		float:left;
+	}
+	form.registerSign label{
+		width: 40%;
+		display: block;
+		margin-bottom: 20px;
+		float: left;
+	}
+	form.registerSign button{
+		float: right;
+	}
+	fieldset{
+		padding: 15px;
+	}
+	button{
+		padding: 8px;
+		width: 150px;
+		background-color: #007010;
+		color: #ffffff;
+		font-weight: bold;
+	}
+	button:hover{
+		background-color: #ff7800;
+	}
+	table{
+		border-collapse: collapse;
+		width: 100%;
+		margin: 20px 0px 40px 0px; 
+	}
+	th {
+	    background-color: #007010;
+	    color: #fff;
+	}
+	th, td {
+	  	padding: 15px;
+	  	text-align: left;
+	  	border-bottom:1px solid #000;
+	}
+	tr:nth-child(even){
+		background-color: #ede9e9;
+	}
+	tr:hover {
+		background-color: #ddd;
+	}
+	
+/*footer*/
+	footer{
+		clear:both;
+		width: 98.7%;
+		padding: 10px 10px 0.5%;
+		background-color: #000000;
+		color: #ffffff;
+		font-size: 10px;
+		text-align: center;
+	}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head leng = "en">
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=&lt;?php bloginfo('charset'); ?&gt;"/>
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Buy, view, manage your train tickets."/>
+		<meta name="keywords" content="Southern California Railway Train Tickets">
+		<meta name="author" content="Amber, Yash, and Raymond">
+		<title>Southern California Railway System</title>
+		<link rel="icon" type="image/png" href="_images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="_css/scrs.css">
+		<style type="text/css">
+					
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="_js/dropdown.js" type="text/javascript"></script>
+		<script type="text/javascript">
+    		$(document).ready(function() {
+				$('#viewBtn').click(function() {
+					$.get('http://localhost:3000/viewPurchased', function(result) {
+						buildTable(result);
+						function buildTable(data){
+							var myTable = document.getElementById('purchased');
+							var temp = "Hello Button World";
+							for (var i=0; i < result[1]; i+=2) {
+								var row = 	`<tr>
+												<td>${result[0][i].Location}</td>
+												<td>${result[0][i+1].Location}</td>
+												<td>${result[0][i].SchedDate.slice(0,10)}</td>
+												<td>${result[0][i].ArriveTime.slice(0,5)}</td>
+												<td>${result[0][i].NumTickets}</td>
+												<td>
+													<button type="button" id="return-button-${i}" value="submit" onclick="returnTicket(${result[0][i].TrainSchedID}, ${result[0][i].PassID}, ${result[0][i].NumTickets})">Return</button>
+												</td>
+											</tr>`;
+								myTable.innerHTML += row;
+							}
+						}
+					});
+				});
+			});
+		
+			
+		</script>
+		<script type="text/javascript">
+			function returnTicket(ticketID, passID, quantity) {
+				$.get('http://localhost:3000/returnTicket' + '?ticketID=' + ticketID + '&passID=' + passID + '&quantity=' + quantity, function(result) {
+					alert('Your ticket has been returned.')
+					location.reload();
+				});
+			}
+		</script>
+	</head>
+	<body class="contain">
+		<header>
+			<div class="title">
+				<h1><a id="temp" href="index.html">Southern California Railway System</a></h1>
+			</div>
+			<nav>
+				<ul id = "nav">
+					<li  class = "drop2" >
+						<a href="tickets.html">Tickets</a>
+						<ul class = "dropp2">
+							<!--If customer logged in-->
+							<li><a class= "current" href="purchased.html">Purchased</a></li>
+							<!--If admin/employee logged in-->
+							<li><a href="passenger.html">Passenger</a></li>
+						</ul>
+					</li>
+					<li class = "drop1" >
+						<a href="schedule.html">Schedule</a>
+						<ul class = "dropp1">
+							<!-- if admin/employee logged in -->
+							<li><a href="employee.html">Employee</a></li>
+						</ul>
+					</li>
+					<!--If not logged in-->
+					<!-- <li><a href="register.html">Register</a></li> -->
+					<!-- <!-- <li>ref="signIn.html ">SignIn</a></li> --> -->
+					<!--If logged in-->
+					<li><a href="account.html">Account</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class = "mainimg">
+			<img src="_images/purchaseTrain.jpg" altt="Train Picture">
+		</div>
+		<main>
+			<p>
+				<h2>View Your Past Purchases! <button id="viewBtn" align="right" type="button">View</button></h2>
+				
+			</p>
+			<hr>
+			<table>
+				<!-- <% for(var i=0; i < result.length/2; i++){%> -->
+				<tr>
+					<th>Location</th>
+					<th>Destination</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Tickets</th>
+					<th>Options</th>
+				</tr>
+				
+				<tbody id="purchased">
+
+				</tbody>
+				<!-- <tr>	
+					<td id="loc-arr"></td>
+					<td id="loc-dep"></td>
+					<td id="arr-date"></td>
+					<td id="arr-time"></td>
+					<td id="num-ticket"></td>
+					<td>
+						<button type="button">Return</button>
+					</td>
+				</tr>
+				<tr>	
+					<td>Los Angeles</td>
+					<td>San Clemente</td>
+					<td>11/06/21</td>
+					<td>2:45 PM</td>
+					<td>2</td>
+					<td>
+						<button type="button">Return</button>
+					</td>
+				</tr> -->
+				<!-- use loop to display content from the database -->
+			</table>
+			<div class = "clear"></div>
+		</main>
+		<footer>
+			<p>&copy;2020 Southern California Railway System --- CPSC 531 Advanced Database Management Project --- Dr. Kanika Sood --- Developers: Amber Kimberling, Yash Bhambhani, and Raymond Magdaleno</p>
+		</footer>
+	</body>
+</html>

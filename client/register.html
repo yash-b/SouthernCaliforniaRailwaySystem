@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head leng = "en">
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=&lt;?php bloginfo('charset'); ?&gt;"/>
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Buy, view, manage your train tickets."/>
+		<meta name="keywords" content="Southern California Railway Train Tickets">
+		<meta name="author" content="Amber, Yash, and Raymond">
+		<title>Southern California Railway System</title>
+		<link rel="icon" type="image/png" href="_images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="_css/scrs.css">
+		<style type="text/css">
+					
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="_js/dropdown.js" type="text/javascript"></script>
+		    <script type="text/javascript">
+    		$(document).ready(function() {
+			$('#registerBtn').click(function() {
+				
+				$.post('http://localhost:3000/registerPassenger', {
+					fname: document.getElementById("fName").value,
+					lname: document.getElementById("lName").value,
+					phone: document.getElementById("phone").value,
+					email: document.getElementById("email").value,
+					password: document.getElementById("pass").value
+
+				} , function(result) {
+						if (result == true) {
+							alert('Registeration successful.');
+							window.location.href = 'signIn.html';
+						}
+				});
+			});
+		});
+		</script>
+	</head>
+	<body class="contain">
+		<header>
+			<div class="title">
+				<h1><a href="index.html">Southern California Railway System</a></h1>
+			</div>
+			<nav>
+				<ul id = "nav">
+					<li  class = "drop2" >
+						<a href="tickets.html">Tickets</a>
+						<ul class = "dropp2">
+							<!--If customer logged in-->
+							<li><a href="purchased.html">Purchased</a></li>
+							<!--If admin/employee logged in-->
+							<li><a href="passenger.html">Passenger</a></li>
+						</ul>
+					</li>
+					<li class = "drop1" >
+						<a href="schedule.html">Schedule</a>
+						<ul class = "dropp1">
+							<!-- if admin/employee logged in -->
+							<li><a href="employee.html">Employee</a></li>
+						</ul>
+					</li>
+					<!--If not logged in-->
+					<li><a class= "current" href="register.html">Register</a></li>
+					<li><a href="signIn.html ">SignIn</a></li>
+					<!--If logged in-->
+					<li><a href="account.html">Account</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class = "mainimg">
+			<img src="_images/registrationTrain.jpg" altt="Train Picture">
+		</div>
+		<main>
+			<h2>Register by Filling out the Following Information!</h2>
+			<hr>
+			<p class="blurb red">Please fill out the following information in the form.</p>
+			<form class = "registerSign" action="/action_page.php">
+				<fieldset>
+					<legend>Registration</legend>
+				  	<label for="fName">First:</label>
+	  				<input class="RegSign" type="text" id="fName" name="fName" placeholder="john" required>
+	  				<br>
+	  				<label for="lName">Last:</label>
+	  				<input class="RegSign" type="text" id="lName" name="lName" placeholder="Doe" required>
+	  				<br>
+	  				<label for="phone">Phone Number:</label>
+	  				<input class="RegSign" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="213-564-2356">
+	  				<br>
+	  				<label for="email">Email:</label>
+	  				<input class="RegSign" type="email" id="email" pattern=".+@globex.com" placeholder="johndoe@gmail.com" required>
+	  				<br>
+	  				<label for="password">Password(6 char. min.):</label>
+	  				<input class="RegSign" type="password" id="pass" name="password" minlength="6" required>
+	  				<br>
+				  	<button id="registerBtn" type="button">Register</button>
+				</fieldset>
+			</form>
+			<div class = "fifty">
+				<img src="_images/registerfifty.jpg" width="100%" style="margin-bottom: 20px;" alt="train next to ocean">
+				<h4>Why Register?</h4>
+				<p>Registering for an account with the Southern California Railway System allows you to manage your account and your previous purchased tickets. If you do not register, when purchasing a ticket you will have to call customer service to make returns on tickets or any other issues with your purchases. </p>
+			</div>
+			<div class = "clear"></div>
+		</main>
+		<footer>
+			<p>&copy;2020 Southern California Railway System --- CPSC 531 Advanced Database Management Project --- Dr. Kanika Sood --- Developers: Amber Kimberling, Yash Bhambhani, and Raymond Magdaleno</p>
+		</footer>
+	</body>
+</html>
