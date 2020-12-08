@@ -25,6 +25,6 @@ The Southern California Railway System is a full stack application that manages 
 - Improve User Interface to be more friendly. 
 
 ### Contributors
-- [Amber Kimberling](https://github.com/)
+- [Amber Kimberling](https://github.com/Akimberling)
 - [Yash Bhambhani](https://yash-b.github.io)
-- [Raymond Magdaleno](https://github.com/)
+- [Raymond Magdaleno](https://github.com/MrRaymondJr)
