@@ -17,13 +17,62 @@
 		<script src="_js/dropdown.js" type="text/javascript"></script>
 		<script type="text/javascript">
     		$(document).ready(function() {
-			$('#addBtn').click(function() {
-				$.get('http://localhost:3000/getEmployeeInfo' + '?fname=' + document.getElementById("fName").value + '&lname=' + document.getElementById("lName").value + '&empID=' + document.getElementById("empID").value, function(list) {
-					// 
+				$('#searchBtn').click(function() {
+					$.get('http://localhost:3000/getEmployeeInfo' + '?empID=' + document.getElementById("empID").value, function(result) {
+						buildTable(result);
+						console.log(result);
+						function buildTable(result){
+							var myTable = document.getElementById('showEmployee');
+							for (var i=0; i < result.length; i++) {
+								var row = 	`<tr>
+												<td>${result[i].EmpFName} ${result[i].EmpLName}</td>
+												<td>${result[i].DeptName}</td>
+												<td>${result[i].JobTitle}</td>
+												<td>${result[i].EmpEmail}</td>
+												<td>${result[i].EmpPhoneNum}</td>
+												<td>
+													<button type="button" id="remove-button-${i}" value="submit" onclick="removeEmp(${result[i].EmpID})">Remove</button>
+												</td>
+											</tr>`;
+								myTable.innerHTML += row;
+							}
+						}
+					});
 				});
-			});
+
+				$('#showAllBtn').click(function() {
+					$.get('http://localhost:3000/getAllEmployeeInfo', function(result) {
+						buildTable(result);
+						console.log(result);
+						function buildTable(data){
+							var myTable = document.getElementById('showEmployee');
+							for (var i=0; i < result.length; i++) {
+								var row = 	`<tr>
+												<td>${result[i].EmpFName} ${result[i].EmpLName}</td>
+												<td>${result[i].DeptName}</td>
+												<td>${result[i].JobTitle}</td>
+												<td>${result[i].EmpEmail}</td>
+												<td>${result[i].EmpPhoneNum}</td>
+												<td>
+													<button type="button" id="remove-button-${i}" value="submit" onclick="removeEmp(${result[i].EmpID})">Remove</button>
+												</td>
+											</tr>`;
+								myTable.innerHTML += row;
+							}
+						}
+					});
+				});
 		});
-    	</script>
+		</script>
+		<script type="text/javascript">
+			function removeEmp(empID) {
+				$.get('http://localhost:3000/removeEmployee' + '?empID=' + empID, function(result) {
+					if (result === true) {
+						location.reload();
+					}
+				});
+			}
+		</script>
 	</head>
 	<body class="contain">
 		<header>
@@ -60,18 +109,15 @@
 			<img src="_images/employeeTrain.jpg" altt="Train Picture">
 		</div>
 		<main>
-			<h2>Manage and Schedule Employees</h2>
+			<h2>Manage Employees</h2>
 			<hr>
 			<form action="/action_page.php">
 				<fieldset>
-					<legend>Add To Schedule</legend>
-				  	<label for="fName">First:</label>
-	  				<input class="searchBar sched" type="text" id="fName" name="fName" required>
-	  				<label for="lName">Last:</label>
-	  				<input class="searchBar sched" type="text" id="lName" name="lName" required>
+					<legend>Search for an employee:</legend>
 	  				<label for="empID">Employee ID:</label>
 	  				<input class="searchBar sched" type="text" id="empID" name="empID" required>
-				  	<button id="addBtn" type="button">Add</button>
+					  <button id="searchBtn" type="button">Search</button>
+					  <button id="showAllBtn" type="button">Show all</button>
 				</fieldset>
 			</form>
 			<table>
@@ -83,16 +129,8 @@
 					<th>Phone</th>
 					<th>Action</th>
 				</tr>
-				<tr>
-					<td>Jordyn Jefferson</td>
-					<td>Administration</td>
-					<td>Manager</td>
-					<td>858-100-9123</td>
-					<td>JJefferson@scrs.com</td>
-					<td>
-						<button type="button">Remove</button>
-					</td>
-				</tr>
+				<tbody id="showEmployee">
+				</tbody>
 				<!-- use loop to display content from the database -->
 			</table>
 			<div class = "clear"></div>

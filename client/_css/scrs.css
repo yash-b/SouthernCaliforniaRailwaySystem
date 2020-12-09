@@ -113,6 +113,11 @@
 		float: left;
 		margin: 0px 10px 2px 2px ;
 	}
+	select.searchBar{
+		margin-right:100px;
+		padding:5px;
+		width:230px;
+	}
 	input.searchBar{
 		margin-right:100px;
 		padding:5px;

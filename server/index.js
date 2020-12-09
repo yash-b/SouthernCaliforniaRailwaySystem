@@ -122,21 +122,53 @@ app.get('/getTicketInfo', function(req, resp) {
     }
 })
 
+app.get('/removeEmployee', function(req, resp) {
+    const queryUrl = req.query;
+    const urlParams = new URLSearchParams(queryUrl);
+    const empID = urlParams.get('empID');
+    var sql_query = "DELETE FROM `employee_info` WHERE EmpID = ?";
+    connection.query(sql_query, empID, function(error, rows, fields) {
+        if (!!error) {
+            console.log('Error in the query ' + error);
+        } else {
+            var sql_query = "DELETE FROM `employee_department` WHERE EmpID = ?";
+            connection.query(sql_query, empID, function(error, rows, fields) {
+                if (!!error) {
+                    console.log('Error in the query ' + error);
+                } else {
+                    resp.send(true);
+                }
+            });
+            
+        }
+    });
+})
+
+app.get('/getAllEmployeeInfo', function(req, resp) {
+    
+    var sql_query = "SELECT EmpFName, EmpLName, DeptName, JobTitle, EmpPhoneNum, EmpEmail, EI.EmpID FROM `employee_info` EI JOIN `employee_department` ED ON EI.EmpID = ED.EmpID JOIN `department_info` DI ON DI.DeptID = ED.DeptID";
+    connection.query(sql_query, function(error, rows, fields) {
+        if (!!error) {
+            console.log('Error in the query ' + error);
+        } else {
+            // console.log(rows);
+            resp.send(rows);
+        }
+    });
+})
+
 app.get('/getEmployeeInfo', function(req, resp) {
     const queryUrl = req.query;
     const urlParams = new URLSearchParams(queryUrl);
-
-    const fname = urlParams.get('fname');
-    const lname = urlParams.get('lname');
     const empID = urlParams.get('empID');
 
-    var sql_query = "";
-    connection.query(sql_query, function(error, rows, fields) {
+    var sql_query = "SELECT EmpFName, EmpLName, DeptName, JobTitle, EmpPhoneNum, EmpEmail, EI.EmpID FROM `employee_info` EI JOIN `employee_department` ED ON EI.EmpID = ED.EmpID JOIN `department_info` DI ON DI.DeptID = ED.DeptID WHERE EI.EmpID = ?";
+    connection.query(sql_query, empID, function(error, rows, fields) {
         if (!!error) {
-            console.log('Error in the query');
+            console.log('Error in the query ' + error);
         } else {
             // console.log(rows);
-            resp.send('ok');
+            resp.send(rows);
         }
     });
 })

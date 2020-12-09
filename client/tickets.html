@@ -18,7 +18,7 @@
 		<script type="text/javascript">	
 			$(document).ready(function() {
 			$('#searchBtn').click(function() {
-				console.log('in search')
+				// console.log(document.getElementsByClassName("location").value + ' ' + document.getElementById("destination").value)
 				$.get('http://localhost:3000/getSchedule' + '?location=' + document.getElementById("location").value + '&destination=' + document.getElementById("destination").value + '&traveldate=' + document.getElementById("travelDate").value, function(result) {
 					
 					console.log(result);
@@ -104,6 +104,40 @@
 				  	<button id="searchBtn" type="button">Search</button>
 				</fieldset>
 			</form>
+			<!-- <form action="/getSchedule" method="GET">
+				<fieldset>
+					<legend>Search</legend>
+				  	<label for="location">From:</label>
+				  	<select class="searchBar" id="location" name="location">
+					    <option value="Los Angeles">Los Angeles</option>
+					    <option value="Burbank">Burbank</option>
+					    <option value="Tustin">Tustin</option>
+					    <option value="Irvine">Irvine</option>
+					    <option value="Lake Forest">Lake Forest</option>
+					    <option value="Costa Mesa">Costa Mesa</option>
+					    <option value="Norwalk">Norwalk</option>
+					    <option value="Oceanside">Oceanside</option>
+					    <option value="Anaheim">Anaheim</option>
+					    <option value="Oxnard">Oxnard</option>
+					</select>
+	  				<label for="destination">To:</label>
+	  				<select class="searchBar" id="destination" name="destination">
+					    <option value="Los Angeles">Los Angeles</option>
+					    <option value="Burbank">Burbank</option>
+					    <option value="Tustin">Tustin</option>
+					    <option value="Irvine">Irvine</option>
+					    <option value="Lake Forest">Lake Forest</option>
+					    <option value="Costa Mesa">Costa Mesa</option>
+					    <option value="Norwalk">Norwalk</option>
+					    <option value="Oceanside">Oceanside</option>
+					    <option value="Anaheim">Anaheim</option>
+					    <option value="Oxnard">Oxnard</option>
+					</select>
+	  				<label for="travelDate">Date:</label>
+					<input class="searchBar" type="date" id="travelDate" name="travelDate" value="2020-10-03" min="2020-10-03" >
+				  	<button type="button" id="searchBtn">Search</button>
+				</fieldset>
+			</form> -->
 			<table>
 				<tr>
 					<th>Location</th>
