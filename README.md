@@ -18,8 +18,9 @@ The Southern California Railway System is a full stack application that manages 
 - `cd` into `/server/` directory and put `npm install && npm start`.
 - Host client folder using any live server and test it out. 
 
-### Roadmap
+### Future Roadmap
 - Implement safer user authentication system, potentially using passport js.
+- Implement transcations using protected concurrency control libraries.
 - Create and utilize cookies for efficient and optimal session handling.
 - Use maps to show schedule for trains.
 - Improve User Interface to be more friendly. 
