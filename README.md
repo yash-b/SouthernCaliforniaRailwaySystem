@@ -15,6 +15,7 @@ The Southern California Railway System is a full stack application that manages 
 - Put `git clone <repo url>` in command line.
 - Go into `/server/index.js` and update `#20 - #24` for db credentials.
 - Turn on mysql service hosting.
+- Create a new DB using `phpmyadmin` and use `/server/CPSC531_RailwayDB.sql` to import DB design and relations.
 - `cd` into `/server/` directory and put `npm install && npm start`.
 - Host client folder using any live server and test it out. 
 
