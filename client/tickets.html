@@ -61,7 +61,7 @@
 				<h1><a href="index.html">Southern California Railway System</a></h1>
 			</div>
 			<nav>
-				<ul id = "nav">
+				<ul id = "nav" style="float: right;">
 					<li  class = "drop2" >
 						<a class= "current" href="tickets.html">Tickets</a>
 						<ul class = "dropp2">
@@ -79,8 +79,7 @@
 						</ul>
 					</li>
 					<!--If not logged in-->
-					<li><a href="register.html">Register</a></li>
-					<li><a href="signIn.html ">SignIn</a></li>
+					<li><a href="signIn.html ">Sign Out</a></li>
 					<!--If logged in-->
 					<li><a href="account.html">Account</a></li>
 				</ul>
@@ -101,7 +100,7 @@
 	  				<input class="searchBar" type="text" id="destination" name="destination">
 	  				<label for="travelDate">Date:</label>
 					<input class="searchBar" type="date" id="travelDate" name="travelDate" value="2020-10-03" min="2020-10-03" >
-				  	<button id="searchBtn" type="button">Search</button>
+				  	<button id="searchBtn" type="button" style="float: right;">Search</button>
 				</fieldset>
 			</form>
 			<!-- <form action="/getSchedule" method="GET">

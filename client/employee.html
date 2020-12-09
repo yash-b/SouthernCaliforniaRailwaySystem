@@ -80,9 +80,9 @@
 				<h1><a href="index.html">Southern California Railway System</a></h1>
 			</div>
 			<nav>
-				<ul id = "nav">
+				<ul id = "nav" style="float: right;">
 					<li  class = "drop2" >
-						<a href="tickets.html">Tickets</a>
+						<a href="passenger.html">Tickets</a>
 						<ul class = "dropp2">
 							<!--If customer logged in-->
 							<li><a href="purchased.html">Purchased</a></li>
@@ -91,15 +91,14 @@
 						</ul>
 					</li>
 					<li class = "drop1" >
-						<a href="schedule.html">Schedule</a>
+						<a href="employee.html">Employee</a>
 						<ul class = "dropp1">
 							<!-- if admin/employee logged in -->
 							<li><a class= "current" href="employee.html">Employee</a></li>
 						</ul>
 					</li>
 					<!--If not logged in-->
-					<li><a href="register.html">Register</a></li>
-					<li><a href="signIn.html ">SignIn</a></li>
+					<li><a href="signIn.html ">Sign Out</a></li>
 					<!--If logged in-->
 					<li><a href="account.html">Account</a></li>
 				</ul>
@@ -116,8 +115,8 @@
 					<legend>Search for an employee:</legend>
 	  				<label for="empID">Employee ID:</label>
 	  				<input class="searchBar sched" type="text" id="empID" name="empID" required>
-					  <button id="searchBtn" type="button">Search</button>
-					  <button id="showAllBtn" type="button">Show all</button>
+					  <button id="searchBtn" style="float: right;" type="button">Search</button>
+					  <button id="showAllBtn" style="float: right; margin-right: 10px;" type="button">Show all</button>
 				</fieldset>
 			</form>
 			<table>
